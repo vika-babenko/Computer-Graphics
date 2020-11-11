@@ -77,8 +77,13 @@ def dimetri(Figure, TetaG1, TetaG2):
     print('Аксонометрія')
     print(Prxy2)
     return Prxy2
+
+def clear(win):
+    for item in win.items[:]:
+        item.undraw()
+    win.update()
 # функція побудови паралелепіпеда
-def PrlpdWiz(Prxy):
+def PrlpdWiz(Prxy, dim):
     Ax = Prxy[0, 0]
     Ay = Prxy[0, 1]
 
@@ -103,41 +108,78 @@ def PrlpdWiz(Prxy):
     Ex = Prxy[7, 0]
     Ey = Prxy[7, 1]
 
+    for i in range(5):
+        if dim == 2:
+            colors = ["red", "orange", "magenta", "pink", "lime", "green", "black"]
+            colors_2 = ["skyblue", "yellow", "grey"]
+            a = colors[random.randint(0, len(colors) - 1)]
+            b = colors[random.randint(0, len(colors) - 1)]
+            c = colors[random.randint(0, len(colors) - 1)]
+            d = colors[random.randint(0, len(colors) - 1)]
+            e = colors_2[random.randint(0, len(colors_2) - 1)]
+            z = colors_2[random.randint(0, len(colors_2) - 1)]
+            t = colors_2[random.randint(0, len(colors_2) - 1)]
+            r = colors_2[random.randint(0, len(colors_2) - 1)]
+
+            obj1 = Polygon(Point(Ax, Ay), Point(Bx, By), Point(Ix, Iy), Point(Mx, My))
+            obj1.setFill(e)
+            obj1.setOutline(a)
+            obj1.draw(win)
+
+            obj2 = Polygon(Point(Dx, Dy), Point(Cx, Cy), Point(Fx, Fy), Point(Ex, Ey))
+            obj2.setFill(z)
+            obj2.setOutline(b)
+            obj2.draw(win)
+
+            obj3 = Polygon(Point(Ax, Ay), Point(Bx, By), Point(Cx, Cy), Point(Dx, Dy))
+            obj3.setFill(t)
+            obj3.setOutline(c)
+            obj3.draw(win)
+
+            obj4 = Polygon(Point(Mx, My), Point(Ix, Iy), Point(Fx, Fy), Point(Ex, Ey))
+            obj4.setFill(r)
+            obj4.setOutline(d)
+            obj4.draw(win)
+
+        elif dim == 32:
+            colors = ["red", "orange", "magenta", "pink", "lime", "green", "black"]
+            colors_2 = ["skyblue", "yellow", "grey"]
+            a = colors[random.randint(0, len(colors) - 1)]
+            b = colors[random.randint(0, len(colors) - 1)]
+            c = colors[random.randint(0, len(colors) - 1)]
+            d = colors[random.randint(0, len(colors) - 1)]
+            e = colors_2[random.randint(0, len(colors_2) - 1)]
+            z = colors_2[random.randint(0, len(colors_2) - 1)]
+            t = colors_2[random.randint(0, len(colors_2) - 1)]
+            r = colors_2[random.randint(0, len(colors_2) - 1)]
+
+            obj1 = Polygon(Point(Ax, Ay), Point(Bx, By), Point(Ix, Iy), Point(Mx, My))
+            obj1.setFill(e)
+            obj1.setOutline(a)
+            obj1.draw(win)
+
+            obj2 = Polygon(Point(Dx, Dy), Point(Cx, Cy), Point(Fx, Fy), Point(Ex, Ey))
+            obj2.setFill(z)
+            obj2.setOutline(b)
+            obj2.draw(win)
+
+            obj3 = Polygon(Point(Ax, Ay), Point(Bx, By), Point(Cx, Cy), Point(Dx, Dy))
+            obj3.setFill(t)
+            obj3.setOutline(c)
+            obj3.draw(win)
+
+            obj4 = Polygon(Point(Mx, My), Point(Ix, Iy), Point(Fx, Fy), Point(Ex, Ey))
+            obj4.setFill(r)
+            obj4.setOutline(d)
+            obj4.draw(win)
+            clear(win)
+
+
     # print(Ax, Ay); print(Bx, By); print(Ix, Iy);  print(Mx, My);
     # print(Dx, Dy); print(Cx, Cy); print(Fx, Fy); print(Ex, Ey);
-    colors = ["red", "orange", "magenta", "pink", "lime", "green", "black"]
-    colors_2 = ["skyblue", "cyan", "blue"]
-    a = colors[random.randint(0, len(colors) - 1)]
-    b = colors[random.randint(0, len(colors) - 1)]
-    c = colors[random.randint(0, len(colors) - 1)]
-    d = colors[random.randint(0, len(colors) - 1)]
-    e = colors_2[random.randint(0, len(colors_2) - 1)]
-    z = colors_2[random.randint(0, len(colors_2) - 1)]
-    t = colors_2[random.randint(0, len(colors_2) - 1)]
-    r = colors_2[random.randint(0, len(colors_2) - 1)]
 
-
-
-    obj1 = Polygon(Point(Ax, Ay), Point(Bx, By), Point(Ix, Iy), Point(Mx, My))
-    obj1.setFill(e)
-    obj1.setOutline(a)
-    obj1.draw(win)
-
-    obj2 = Polygon(Point(Dx, Dy), Point(Cx, Cy), Point(Fx, Fy), Point(Ex, Ey))
-    obj2.setFill(z)
-    obj2.setOutline(b)
-    obj2.draw(win)
-
-    obj3 = Polygon(Point(Ax, Ay), Point(Bx, By), Point(Cx, Cy), Point(Dx, Dy))
-    obj3.setFill(t)
-    obj3.setOutline(c)
-    obj3.draw(win)
-
-    obj4 = Polygon(Point(Mx, My), Point(Ix, Iy), Point(Fx, Fy), Point(Ex, Ey))
-    obj4.setFill(r)
-    obj4.setOutline(d)
-    obj4.draw(win)
     return PrlpdWiz
+
 #-------------------------------------------- побудова паралелепіпеда -----------------------------
 win = GraphWin("3-D модель паралелепіпеда, аксонометрічна проекція на ХУ", xw, yw)
 win.setBackground('white')
@@ -156,7 +198,7 @@ n=m
 #Prxy3=ProjectXY (Prlpd2)
 
 Prxy3 = Parallelepiped
-PrlpdWiz(Prxy3)
+PrlpdWiz(Prxy3, 2)
 win.getMouse()
 win.close()
 
@@ -176,7 +218,7 @@ Prlpd1=ShiftXYZ (Parallelepiped, l, m, n)
 #Prlpd2=dimetri (Prlpd1, TetaG1, TetaG2)
 Prlpd2=insertX(Prlpd1, TetaG1)
 Prxy3=ProjectXY(Prlpd2)
-PrlpdWiz(Prxy3)
+PrlpdWiz(Prxy3, 2)
 win.getMouse()
 win.close()
 
@@ -194,7 +236,7 @@ Prlpd1=ShiftXYZ (Parallelepiped, l, m, n)
 #Prlpd2=dimetri (Prlpd1, TetaG1, TetaG2)
 Prlpd2=insertX(Prlpd1, TetaG1)
 Prxy3=ProjectXY(Prlpd2)
-PrlpdWiz(Prxy3)
+PrlpdWiz(Prxy3, 2)
 win.getMouse()
 win.close()
 
@@ -212,7 +254,30 @@ Prlpd1=ShiftXYZ(Parallelepiped, l, m, n)
 Prlpd2=dimetri(Prlpd1, TetaG1, TetaG2)
 #Prlpd2=insertX (Prlpd1, TetaG1)
 Prxy3=ProjectXY(Prlpd2)
-PrlpdWiz(Prxy3)
+PrlpdWiz(Prxy3, 2)
+win.getMouse()
+win.close()
+
+
+
+win = GraphWin("3-D  циклічний оберт навколо X та Y", 700, 700)
+win.setBackground("#C19A6B")
+xw = 600
+yw = 600
+st = 50
+
+l = (xw/2)-st
+m = st
+n = m
+Parallelepiped1 = ShiftXYZ(Parallelepiped, l, m, n)
+for i in range(1000):
+    TetaG1 = i
+    TetaG2 = i - 90
+    Pyramid2 = dimetri(Parallelepiped1, TetaG1, TetaG2)
+    Prxy3 = ProjectXY(Pyramid2)
+    PrlpdWiz(Prxy3, 32)
+    time.sleep(0.0000000000005)
+
 win.getMouse()
 win.close()
 
